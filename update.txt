@@ -1,0 +1,13 @@
+upcoming features... priority TOP to BOTTOM
+
+- make duplicates fill from each other df.auto_fill()
+
+- add CSV support
+
+- add option to print out droppable_rows into new sheet
+
+- implement abbreviation for tool and launch
+
+- export as table
+
+- increase accuracy by replacing df.duplicates with own implementation
