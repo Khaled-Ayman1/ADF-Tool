@@ -1,5 +1,5 @@
 
-# Advanced Duplicate Filter 1.0 #
+# Advanced Duplicate Filter 1.0 (Beta)#
 
 - ADF is a tool for filtering column duplicates relative to their number of entries in a certain row, also filling null
 entries into the original rows from droppable rows
