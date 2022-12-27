@@ -83,10 +83,10 @@ def drop_duplicate(duplicates_df):
             row_list = clean_duplicates[row]
             results.append(len(row_list))
 
-        # stores row with highest entries
+        # stores row with the highest entries
         drop_invalid = results.index(max(results))
 
-        # comparing index of duplicates index of highest entries (drop if not the same index)
+        # comparing index of duplicates index with the highest entries (drop if not the same index)
         for drop_candidate in range(len(clean_duplicates)):
             if clean_duplicates[drop_candidate][0] != clean_duplicates[drop_invalid][0]:
                 dropped_rows.append(clean_duplicates[drop_candidate])
