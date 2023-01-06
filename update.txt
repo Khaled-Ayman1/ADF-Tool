@@ -1,13 +1,24 @@
-upcoming features... priority TOP to BOTTOM
+**Upcoming features... priority TOP to BOTTOM
 
-- make duplicates fill from each other df.auto_fill()
 
-- add CSV support
+- Implement duplicates filling from each other df.auto_fill() (Eliminate nan values)
 
-- add option to print out droppable_rows into new sheet
+- Adding CSV support
 
-- implement abbreviation for tool and launch
+- Adding feature to print out droppable_rows into a new sheet/file
 
-- export as table
+- Implement CLI commands for Beta build launch
 
-- increase accuracy by replacing df.duplicates with own implementation
+- Fix df not exported as table bug in .xlsx files
+
+- Increase duplicates determination accuracy by replacing pd.duplicates with own implementation (User input errors)
+
+- Allow for substring misprints, 1-3 chars of mismatch (String Duplicates)
+
+
+** Alpha phase bugs (Over 10k rows of data tested):
+
+
+- inaccuracy in pandas df.duplicates
+
+- Lack of Performance with string data (No duplicates found)

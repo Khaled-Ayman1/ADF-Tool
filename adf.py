@@ -108,7 +108,8 @@ if user_input == 1:
         df.to_excel(writer, index=False)
 elif user_input == 2:
     new_path = input("Enter new file full path: ")
-    df.to_excel(new_path, sheet_name='Cleaned_py', index=False)
+    sheet_name = input("Enter Sheet Name: ")
+    df.to_excel(new_path, sheet_name=sheet_name, index=False)
 elif user_input == 3:
     # creating ExcelWriter object to append sheet to existing file
     with pd.ExcelWriter(path, mode='a', engine='openpyxl') as writer:
