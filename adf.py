@@ -107,7 +107,7 @@ if user_input == 1:
     with pd.ExcelWriter(path) as writer:
         df.to_excel(writer, index=False)
 elif user_input == 2:
-    new_path = input("Enter new file full path: ")
+    new_path = input("Enter new file full path (Include file name): ")
     sheet_name = input("Enter Sheet Name: ")
     df.to_excel(new_path, sheet_name=sheet_name, index=False)
 elif user_input == 3:
