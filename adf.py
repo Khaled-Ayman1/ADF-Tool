@@ -20,8 +20,28 @@ duplicate_data = df[df.duplicated([key_column], keep=False)]
 duplicate_data = duplicate_data.reset_index()
 
 
-def auto_fill(unfiltered_duplicate):  # ---> Function to allow duplicates to fill from each other (compare_duplicates)
-    return
+# Function to allow duplicates to fill from each other (compare_duplicates)
+def auto_fill(compare_duplicates):
+    auto_filled = []
+    for primary_list in compare_duplicates:
+
+        for secondary_list in compare_duplicates:
+            if primary_list == secondary_list:
+                continue
+            primary_na = pd.isna(primary_list).tolist()
+            secondary_na = pd.isna(secondary_list).tolist()
+
+            for null_check in range(len(primary_na)):
+                primary_bool = primary_na[null_check]
+                secondary_bool = secondary_na[null_check]
+
+                if primary_bool != secondary_bool:
+                    if primary_bool:
+                        primary_list[null_check] = secondary_list[null_check]
+                    if secondary_bool:
+                        secondary_list[null_check] = primary_list[null_check]
+    auto_filled.append(primary_list)
+    return auto_filled
 
 
 # returns a list of rows to be dropped
@@ -39,15 +59,17 @@ def drop_duplicate(duplicates_df):
 
     for index_val in range(len(duplicates_df)):
         # check that row isn't covered
-        if duplicates_df.loc[index_val, key_column] in is_iterated:
+        main_value = duplicates_df.loc[index_val, key_column]
+        if main_value in is_iterated:
             continue
-        is_iterated.append(duplicates_df.loc[index_val, key_column])
+        is_iterated.append(main_value)
 
         # holds equivalent duplicate row lengths
         results = []
+        compared_element = duplicates_df.loc[index_val].values.tolist()
 
         # contains equivalent duplicates for priority comparison
-        compare_duplicates = [duplicates_df.loc[index_val].values.tolist()]
+        compare_duplicates = [compared_element]
 
         # detecting equivalent duplicates and appending to comparison list
         for duplicate_index in range(len(duplicates_df)):
@@ -55,10 +77,14 @@ def drop_duplicate(duplicates_df):
             if duplicate_index == index_val:
                 continue
 
-            # evaluate whether the iterator row is a duplicate of main loop iterator depending on key column
-            if duplicates_df.loc[duplicate_index][key_column] == duplicates_df.loc[index_val][key_column]:
-                compared_element = duplicates_df.loc[duplicate_index]
-                compare_duplicates.append(compared_element.values.tolist())
+            loop_value = duplicates_df.loc[duplicate_index][key_column]
+
+            # evaluate whether the iterator value is a duplicate of main loop value depending on key column
+            if loop_value == main_value:
+                compared_element = duplicates_df.loc[duplicate_index].values.tolist()
+                compare_duplicates.append(compared_element)
+
+        auto_fill(compare_duplicates)
 
         # filter out nan values in duplicates
         clean_duplicates = []
