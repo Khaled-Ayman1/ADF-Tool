@@ -3,9 +3,9 @@
 
 - ADF (Advanced Data Filtering) is a powerful data analysis tool that specializes in identifying and filtering column duplicates based on their frequency of occurrence within a specific row. It provides functionality to identify duplicate values in a column and determine their relative number of entries across rows.
 
-Additionally, ADF offers the capability to fill null entries in the original rows with data from droppable rows. This feature ensures that missing or incomplete information is populated using relevant data from other rows, enhancing the completeness and accuracy of the dataset.
+- Additionally, ADF offers the capability to fill null entries in the original rows with data from droppable rows. This feature ensures that missing or incomplete information is populated using relevant data from other rows, enhancing the completeness and accuracy of the dataset.
 
-By leveraging ADF's unique filtering and data filling capabilities, analysts can efficiently clean and enhance their datasets, eliminating duplicate values and filling in missing data to create more reliable and robust data for analysis and decision-making.
+- By leveraging ADF's unique filtering and data filling capabilities, analysts can efficiently clean and enhance their datasets, eliminating duplicate values and filling in missing data to create more reliable and robust data for analysis and decision-making.
 
 
 ## Returns ##
